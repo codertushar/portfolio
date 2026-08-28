@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 /**
  * Decides whether to run the "light" tier: fewer particles, lower DPR,
  * simpler motion. Covers reduced-motion users, touch devices on small
- * screens, and machines with few cores — all of which struggle most with a
+ * screens, and machines with few cores, all of which struggle most with a
  * continuously-rendering WebGL canvas.
  */
 export function useLowPower() {
