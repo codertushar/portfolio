@@ -165,13 +165,22 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: "AI Code Review Demo",
-    tagline: "Automating the first pass of a PR review",
+    name: "MotorcycleWise",
+    tagline: "GaadiWise's sibling, for two-wheelers",
     description:
-      "A GitHub Actions pipeline that runs an AI reviewer against every pull request, the same instinct behind the AI-assisted delivery cycle now running day to day at CatalystOne.",
-    stack: ["GitHub Actions", "ChatGPT", "CI/CD"],
-    href: "https://github.com/codertushar/AI-Code-Review-Demo",
-    kind: "tool",
+      "The same AI-matching approach as GaadiWise, tuned for Indian motorcycle and scooter buyers: a 20+ bike catalog, side-by-side comparisons, an ownership-cost calculator and segment-specific buyer guides.",
+    stack: ["React 19", "TypeScript", "Vite", "Tailwind", "Gemini AI"],
+    href: "https://github.com/codertushar/MotorcycleWise",
+    kind: "product",
+  },
+  {
+    name: "InterviewPrep",
+    tagline: "Personalized interview prep, one roadmap at a time",
+    description:
+      "An onboarding flow builds a custom study roadmap by role and stack, backed by a filterable DSA question bank, system design topics and progress tracking.",
+    stack: ["Next.js", "React 19", "TypeScript", "Tailwind"],
+    href: "https://github.com/codertushar/InterviewPrep",
+    kind: "product",
   },
   {
     name: "frontend-resources",
