@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# tushar-khanna-portfolio
 
-## Available Scripts
+A scroll-driven, WebGL-backed portfolio. Full rebuild — replaces the old
+Create React App resume site with a single long-form page that tells the
+career story as you scroll, instead of a static list of jobs.
 
-In the project directory, you can run:
+**Live concept:** a fixed 3D scene sits behind the page; scroll position
+drives its color, distortion, camera and rotation as you move through each
+chapter of the "journey" timeline, then the page settles into a more
+conventional (but still animated) layout for skills, projects and contact.
 
-### `npm start`
+## Stack
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Next.js 14** (App Router) + TypeScript
+- **Tailwind CSS** for styling
+- **React Three Fiber** / **drei** / **three** for the WebGL scene
+- **GSAP** + **ScrollTrigger** for scroll-scrubbed animation
+- **Lenis** for smooth/inertia scrolling
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Structure
 
-### `npm test`
+```
+src/
+  app/                 # Next.js App Router entry (layout, page, metadata, globals.css)
+  components/
+    canvas/Scene.tsx    # the R3F canvas — centerpiece, orbiters, lights, camera rig
+    sections/           # Hero, Journey, Impact, Skills, Projects, Contact
+    ui/                 # Nav, ProgressBar, Preloader
+    SmoothScroller.tsx  # Lenis + GSAP ScrollTrigger wiring
+  lib/
+    content.ts          # all copy — experience, skills, projects, metrics
+    sceneStore.ts        # module-level store the 3D scene reads every frame
+    useLowPower.ts       # reduced-motion / low-end-device detection
+    lenisSingleton.ts    # exposes the active Lenis instance for nav "scroll to"
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Content lives in one place (`src/lib/content.ts`) — that's the file to edit
+for new roles, projects, or numbers.
 
-### `npm run build`
+## Local development
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Built for **Vercel** — import the repo, framework auto-detects as Next.js,
+no config needed. `public/Tushar-Khanna-Resume.pdf` is served at
+`/Tushar-Khanna-Resume.pdf`.
 
-### `npm run eject`
+## Accessibility / performance notes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Respects `prefers-reduced-motion`: the Journey section falls back to a
+  plain stacked layout (no pinning/scrub) and Lenis smooth-scroll is skipped.
+- A `lowPower` tier (touch + narrow screens, or `hardwareConcurrency <= 4`)
+  reduces particle count and canvas DPR.
+- No external runtime assets (fonts are self-hosted via `next/font`, the 3D
+  scene is fully procedural — no glTF/HDR downloads).

@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: auto;
+  background: #050507;
+}
+
+body {
+  background: #050507;
+  color: #f6f5f2;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: #a78bfa;
+  color: #050507;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(246, 245, 242, 0.15) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(246, 245, 242, 0.15);
+  border-radius: 999px;
+}
+
+/* Subtle film-grain overlay, sits above the WebGL scene, below UI text. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
