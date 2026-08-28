@@ -171,7 +171,7 @@ function SectionHeading() {
       <h2 className="font-display text-sm uppercase tracking-[0.35em] text-bone-500">
         The journey
       </h2>
-      <span className="font-mono text-xs text-bone-500">01 — 04</span>
+      <span className="font-mono text-xs text-bone-500">01 / 04</span>
     </div>
   );
 }

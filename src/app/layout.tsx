@@ -5,6 +5,7 @@ import SmoothScroller from "@/components/SmoothScroller";
 import Nav from "@/components/ui/Nav";
 import ProgressBar from "@/components/ui/ProgressBar";
 import Preloader from "@/components/ui/Preloader";
+import { getSiteUrl } from "@/lib/siteUrl";
 
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const display = Space_Grotesk({
@@ -16,19 +17,19 @@ const display = Space_Grotesk({
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tusharkhanna.me"),
-  title: "Tushar Khanna — Technical Lead, Full-stack & Applied AI",
+  metadataBase: new URL(getSiteUrl()),
+  title: "Tushar Khanna, Technical Lead, Full-stack & Applied AI",
   description:
-    "14 years building enterprise web products — the last 6 leading frontend and platform architecture for an HCM suite used by 200+ customers, now shipping AI directly into the product.",
+    "14 years building enterprise web products, the last 6 leading frontend and platform architecture for an HCM suite used by 200+ customers, now shipping AI directly into the product.",
   openGraph: {
-    title: "Tushar Khanna — Technical Lead, Full-stack & Applied AI",
+    title: "Tushar Khanna, Technical Lead, Full-stack & Applied AI",
     description:
       "14 years building enterprise web products, now shipping AI directly into a product used by 200+ customers.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Tushar Khanna — Technical Lead, Full-stack & Applied AI",
+    title: "Tushar Khanna, Technical Lead, Full-stack & Applied AI",
     description: "14 years building enterprise web products, now shipping AI into the product.",
   },
 };
