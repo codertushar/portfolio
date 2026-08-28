@@ -1,5 +1,7 @@
 # tushar-khanna-portfolio
 
+**Live:** https://tusharkhanna.vercel.app/
+
 A scroll-driven, WebGL-backed portfolio. Full rebuild — replaces the old
 Create React App resume site with a single long-form page that tells the
 career story as you scroll, instead of a static list of jobs.
